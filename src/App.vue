@@ -4,6 +4,20 @@
       <a>新冠肺炎大事记</a>
     </div>
 
+    <div class="time">
+      <el-row>
+        <el-col>
+          <i class="el-icon-back"></i>
+        </el-col>
+        <el-col>
+          <el-date-picker v-model="date_picker" type="date" placeholder="选择日期"></el-date-picker>
+        </el-col>
+        <el-col>
+          <i class="el-icon-right"></i>
+        </el-col>
+      </el-row>
+    </div>
+
     <div class="news">
       <el-carousel
         height="200px"
@@ -33,7 +47,7 @@
         arrow="never"
       >
         <el-carousel-item class="pic-item" v-for="(item, index) in pics" :key="index">
-          <div class="picture" v-if='item==""'></div>
+          <div class="picture" v-if="item=="""></div>
           <img class="picture" v-else :src="item" />
           <!-- <img class="picture" src="./assets/01-19.png" /> -->
         </el-carousel-item>
@@ -67,6 +81,7 @@ export default {
       dates: [],
       pics: [],
       active: 0,
+      date_picker:""
     };
   },
   methods: {
@@ -79,7 +94,11 @@ export default {
         axios
           .get("/getOneNews?date=" + date.toISOString().slice(0, 10))
           .then((res) => {
-            if (res.status == 200 && JSON.stringify(res.data)!="{}" && res.data["news"] != "") {
+            if (
+              res.status == 200 &&
+              JSON.stringify(res.data) != "{}" &&
+              res.data["news"] != ""
+            ) {
               this.news.push(res.data["news"]);
               this.dates.push(res.data["date"]);
               this.pics.push(res.data["pics"]);
@@ -95,6 +114,9 @@ export default {
 body {
   margin: 0;
   background-color: rgb(249, 249, 249);
+}
+
+.time {
 }
 
 .news {
