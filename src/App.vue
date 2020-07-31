@@ -33,7 +33,7 @@
         arrow="never"
       >
         <el-carousel-item class="pic-item" v-for="(item, index) in pics" :key="index">
-          <div class="picture" v-if='item=="/images/default.png"'></div>
+          <div class="picture" v-if='item==""'></div>
           <img class="picture" v-else :src="item" />
           <!-- <img class="picture" src="./assets/01-19.png" /> -->
         </el-carousel-item>
@@ -82,7 +82,7 @@ export default {
             if (res.status == 200 && JSON.stringify(res.data)!="{}" && res.data["news"] != "") {
               this.news.push(res.data["news"]);
               this.dates.push(res.data["date"]);
-              this.pics.push(res.data["pic"]);
+              this.pics.push(res.data["pics"]);
             }
           });
       }
