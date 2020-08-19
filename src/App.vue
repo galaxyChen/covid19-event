@@ -1,10 +1,13 @@
 <template>
-  <div>
-    <div class="header">
+  <el-container>
+    <el-header>
+      <div class="header">
       <a>新冠肺炎大事记</a>
     </div>
+    </el-header>
 
-    <div class="time">
+    <el-main>
+      <div class="time">
       <el-row justify="center" type="flex">
         <el-col :span="2">
           <i class="arrow el-icon-back" @click="goLast"></i>
@@ -63,7 +66,18 @@
         </el-carousel>
       </div>
     </div>
-  </div>
+    </el-main>
+
+    <el-footer class="footer">
+      <span style="text-align:center;">
+        <p class="footer-text">本网站由上海交通大学2019新冠肺炎抗疫大事记实践团制作</p>
+        <p class="footer-text">不忘初心,牢记使命</p>
+      </span>
+      <img class="footer-img" src="https://www.sjtu.edu.cn/resource/assets/img/LogoWhite.png"/>
+      
+      
+    </el-footer>
+  </el-container>
 </template>
 
 <script>
@@ -164,6 +178,10 @@ body {
   background-color: rgb(249, 249, 249);
 }
 
+.footer-img {
+  background-color: red;
+}
+
 .main {
   /* background-image: url('https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3114336894,3869751630&fm=26&gp=0.jpg'); */
   /* background-size: 100% 100%;
@@ -226,5 +244,16 @@ body {
   background-color: #b3c0d1;
   padding-left: 10px;
   margin: 0;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer-text {
+  margin: 0;
+  margin-bottom: 5px;
+  color: #909399;
 }
 </style>
